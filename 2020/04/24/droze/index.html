@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="droze入坑配置依赖 python27安装 python27依赖库安装，建议安装前给pip换源，加入环境变量 pip install protobuf pip install pyOpenSSL pip install service_identity pip install Twisted    adb安装—-下载地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="droze入坑">
+<meta property="og:url" content="http://yoursite.com/2020/04/24/droze/index.html">
+<meta property="og:site_name" content="enl4">
+<meta property="og:description" content="droze入坑配置依赖 python27安装 python27依赖库安装，建议安装前给pip换源，加入环境变量 pip install protobuf pip install pyOpenSSL pip install service_identity pip install Twisted    adb安装—-下载地址">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181709.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422182010.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181019.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181107.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181129.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185125.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185404.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185556.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185736.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422190114.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422193243.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422193447.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422193853.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422194032.png">
+<meta property="og:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422194119.png">
+<meta property="article:published_time" content="2020-04-24T08:00:54.000Z">
+<meta property="article:modified_time" content="2020-04-24T00:57:40.521Z">
+<meta property="article:author" content="enl4">
+<meta property="article:tag" content="安卓">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181709.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/24/droze/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>droze入坑 | enl4</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">enl4</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一定不要浮躁</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/droze/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="enl4">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="enl4">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          droze入坑
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-24 08:00:54 / Modified: 00:57:40" itemprop="dateCreated datePublished" datetime="2020-04-24T08:00:54Z">2020-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AE%89%E5%8D%93/" itemprop="url" rel="index"><span itemprop="name">安卓</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>3 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="droze入坑"><a href="#droze入坑" class="headerlink" title="droze入坑"></a>droze入坑</h1><h3 id="配置依赖"><a href="#配置依赖" class="headerlink" title="配置依赖"></a>配置依赖</h3><ul>
+<li>python27安装</li>
+<li>python27依赖库安装，建议安装前给pip换源，加入环境变量<ol>
+<li>pip install protobuf</li>
+<li>pip install pyOpenSSL</li>
+<li>pip install service_identity</li>
+<li>pip install Twisted </li>
+</ol>
+</li>
+<li>adb安装—-<a href="http://adbshell.com/upload/adb.zip" target="_blank" rel="noopener">下载地址</a><a id="more"></a>
+
+</li>
+</ul>
+<h3 id="adb配置"><a href="#adb配置" class="headerlink" title="adb配置"></a>adb配置</h3><p>下载好adb压缩包后压解在一个位置，并将该路径加入系统环境变量。压解后如下</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181709.png" alt="image-20200422181707634"></p>
+<p>通过USB线将手机与电脑连接，注意手机要开启USB调试，通常在开发者选项下。连接后使用下面命令查看连接的设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422182010.png" alt="image-20200422182009746"></p>
+<p>然后就可以继续下一步了</p>
+<h3 id="安装droze"><a href="#安装droze" class="headerlink" title="安装droze"></a>安装droze</h3><p><a href="https://github.com/mwrlabs/drozer/releases/" target="_blank" rel="noopener">下载地址</a> win10选择红框内的下载</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181019.png" alt="image-20200422181018450"></p>
+<p>下一步</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181107.png" alt="image-20200422181106447"></p>
+<p>下一步</p>
+<p>点击下面那个磁盘（python from another location），在下面填入python27的路径</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422181129.png" alt="image-20200422181127729"></p>
+<p>安装好后给手机下载agent</p>
+<p><a href="https://github.com/mwrlabs/drozer/releases/download/2.3.4/drozer-agent-2.3.4.apk" target="_blank" rel="noopener">下载地址</a></p>
+<p>安装好后，开启右下角的代理</p>
+<p>通过adb端口转发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:31415 tcp:31415</span><br></pre></td></tr></table></figure>
+
+<h3 id="dorze连接"><a href="#dorze连接" class="headerlink" title="dorze连接"></a>dorze连接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drozer console connect</span><br></pre></td></tr></table></figure>
+
+<p>正常连接如下（如果命令执行不成功，在python27的scripts目录下执行）</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185125.png" alt="image-20200422185123863"></p>
+<p><strong>乱码问题解决</strong></p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185404.png" alt="image-20200422185402644"></p>
+<p>该命令是查看手机中安装的App包列表，但是中文乱码了，这是由于cmd的编码和java（python）不一致导致的</p>
+<p>chcp查看cmd默认0编码为936（GBK）</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185556.png" alt="image-20200422185555109"></p>
+<p>通过<code>chcp 65001</code>设置编码为<code>utf-8</code></p>
+<p>然后执行<code>set PYTHONIOENCODING=UTF-8</code>(此方法是临时的)</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422185736.png" alt="image-20200422185734474"></p>
+<p>然后重新连接drozer，成功显示中文编码</p>
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422190114.png" alt="image-20200422190112738"></p>
+<h3 id="使用drozer对app进行测试"><a href="#使用drozer对app进行测试" class="headerlink" title="使用drozer对app进行测试"></a>使用drozer对app进行测试</h3><h4 id="drozer的相关参数"><a href="#drozer的相关参数" class="headerlink" title="drozer的相关参数"></a>drozer的相关参数</h4><table>
+<thead>
+<tr>
+<th><strong>Command</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>run</td>
+<td>Executes a drozer module</td>
+</tr>
+<tr>
+<td>list</td>
+<td>Show a list of all drozer modules that can be executed in the current session. This hides modules that you do not have suitable permissions to run.</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>Start an interactive Linux shell on the device, in the context of the Agent process.</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>Mounts a particular namespace as the root of session, to avoid having to repeatedly type the full name of a module.</td>
+</tr>
+<tr>
+<td>clean</td>
+<td>Remove temporary files stored by drozer on the Android device.</td>
+</tr>
+<tr>
+<td>echo</td>
+<td>Print text to the console.</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>Terminate the drozer session.</td>
+</tr>
+<tr>
+<td>help</td>
+<td>Display help about a particular command or module.</td>
+</tr>
+<tr>
+<td>contributors</td>
+<td>Displays a list of people who have contributed to the drozer framework and modules in use on your system</td>
+</tr>
+<tr>
+<td>load</td>
+<td>Load a file containing drozer commands, and execute them in sequence.</td>
+</tr>
+<tr>
+<td>module</td>
+<td>Find and install additional drozer modules from the Internet.</td>
+</tr>
+<tr>
+<td>permissions</td>
+<td>Display a list of the permissions granted to the drozer Agent.</td>
+</tr>
+<tr>
+<td>set</td>
+<td>Store a value in a variable that will be passed as an environment variable to any Linux shells spawned by drozer.</td>
+</tr>
+<tr>
+<td>unset</td>
+<td>Remove a named variable that drozer passes to any Linux shells that it spawns</td>
+</tr>
+</tbody></table>
+<h4 id="drozer的四大组件"><a href="#drozer的四大组件" class="headerlink" title="drozer的四大组件"></a>drozer的四大组件</h4><table>
+<thead>
+<tr>
+<th><strong>Activity</strong></th>
+<th>app.activity.forintent – 找到可以处理已指定的包 <br />app.activity.info – 获取activity组件信息 <br />app.activity.start – 开启activity组件 <br />scanner.activity.browsable – 获取可从web浏览器调用的所有可浏览的activity组件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Service</strong></td>
+<td><strong>app.provider.columns – 在内容提供程序中列出列<br/>app.provider.delete – 在内容提供程序中删除<br/>app.provider.download – 在内容提供程序中下载支持文件<br/>app.provider.finduri – 在包中查找引用的内容URIS<br/>app.provider.info – 获取Content Provider组件信息<br/>app.provider.insert – 插入到Content Provider组件中<br/>app.provider.query – 查询Content Provider组件<br/>app.provider.read – 从支持文件的Content Provider读取<br/>app.provider.update – 更新Content Provider的记录<br/>scanner.provider.finduris – 搜索可从上下文中查询的Content Provider<br/>scanner.provider.injection – 测试Content Provider的注入漏洞<br/>scanner.provider.sqltables – 查找可通过SQL注入漏洞访问的表<br/>scanner.provider.traversal – 测试Content Provider的基本目录遍历漏洞</strong></td>
+</tr>
+<tr>
+<td><strong>Content Provider</strong></td>
+<td><strong>app.service.info – 获取service组件信息<br/>app.service.send – 向服务组件发送消息并显示答复<br/>app.service.start – 开启service组件<br/>app.service.stop – 停止service组件</strong></td>
+</tr>
+<tr>
+<td><strong>Broadcast Receivers</strong></td>
+<td><strong>app.broadcast.info – 获取有关广播接收器的信息<br/>app.broadcast.send – 带目的发送广播<br/>app.broadcast.sniff – 注册一个能嗅出特定意图的广播接收器</strong></td>
+</tr>
+</tbody></table>
+<h4 id="drozer的基本用法"><a href="#drozer的基本用法" class="headerlink" title="drozer的基本用法"></a><strong>drozer的基本用法</strong></h4><ol>
+<li>使用list查看支持哪些模块</li>
+<li>使用help module_name，或者run module_name -h查看各module的用法</li>
+<li>通过run module_name module_options来对app进行检测</li>
+</ol>
+<h4 id="基本信息收集流程"><a href="#基本信息收集流程" class="headerlink" title="基本信息收集流程"></a><strong>基本信息收集流程</strong></h4><h5 id="通过app-package-list模块获取要检测的app的包名"><a href="#通过app-package-list模块获取要检测的app的包名" class="headerlink" title="通过app.package.list模块获取要检测的app的包名"></a>通过app.package.list模块获取要检测的app的包名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run app.package.list -f momo &#x2F;&#x2F;-f是搜索的意思</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422193243.png" alt="image-20200422193241526"></p>
+<h5 id="使用app-package-info模块查看apk基本信息"><a href="#使用app-package-info模块查看apk基本信息" class="headerlink" title="使用app.package.info模块查看apk基本信息"></a>使用app.package.info模块查看apk基本信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run app.package.info -a com.maimemo.android.momo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422193447.png" alt="image-20200422193445839"></p>
+<h5 id="使用app-package-attacksurface模块识别攻击面"><a href="#使用app-package-attacksurface模块识别攻击面" class="headerlink" title="使用app.package.attacksurface模块识别攻击面"></a>使用app.package.attacksurface模块识别攻击面</h5><h5 id="使用app-activity-info模块查看activity组件信息"><a href="#使用app-activity-info模块查看activity组件信息" class="headerlink" title="使用app.activity.info模块查看activity组件信息"></a>使用app.activity.info模块查看activity组件信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run app.activity.info -a com.maimemo.android.momo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422193853.png" alt="image-20200422193852147"></p>
+<h5 id="使用app-provider-info模块查看content-provider组件信息"><a href="#使用app-provider-info模块查看content-provider组件信息" class="headerlink" title="使用app.provider.info模块查看content provider组件信息"></a>使用app.provider.info模块查看content provider组件信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run app.provider.info -a  com.maimemo.android.momo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422194032.png" alt="image-20200422194031256"></p>
+<h5 id="使用app-service-info模块查看service组件信息"><a href="#使用app-service-info模块查看service组件信息" class="headerlink" title="使用app.service.info模块查看service组件信息"></a>使用app.service.info模块查看service组件信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run app.service.info -a com.maimemo.android.momo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://myblogs-1259760473.cos.ap-chengdu.myqcloud.com/imgs/20200422194119.png" alt="image-20200422194118675"></p>
+<p>具体攻击测试可以参考<a href="http://www.feidao.site/wordpress/index.php/2020/04/07/android11/" target="_blank" rel="noopener">这篇文章</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a href="http://www.feidao.site/wordpress/index.php/2020/04/07/android11/" target="_blank" rel="noopener">http://www.feidao.site/wordpress/index.php/2020/04/07/android11/</a></p>
+<p><a href="https://www.cnblogs.com/lsdb/p/9441813.html" target="_blank" rel="noopener">https://www.cnblogs.com/lsdb/p/9441813.html</a></p>
+<p><a href="https://www.cnblogs.com/lsdb/p/9438215.html" target="_blank" rel="noopener">https://www.cnblogs.com/lsdb/p/9438215.html</a></p>
+<p><a href="https://www.cnblogs.com/fanfeng/p/9246776.html" target="_blank" rel="noopener">https://www.cnblogs.com/fanfeng/p/9246776.html</a></p>
+<p><a href="https://github.com/conda/conda/issues/5448" target="_blank" rel="noopener">https://github.com/conda/conda/issues/5448</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E5%8D%93/" rel="tag"># 安卓</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/24/Raven1/" rel="prev" title="Raven:1">
+      <i class="fa fa-chevron-left"></i> Raven:1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/24/DC-1/" rel="next" title="DC:1">
+      DC:1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#droze入坑"><span class="nav-number">1.</span> <span class="nav-text">droze入坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置依赖"><span class="nav-number">1.0.1.</span> <span class="nav-text">配置依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adb配置"><span class="nav-number">1.0.2.</span> <span class="nav-text">adb配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装droze"><span class="nav-number">1.0.3.</span> <span class="nav-text">安装droze</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dorze连接"><span class="nav-number">1.0.4.</span> <span class="nav-text">dorze连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用drozer对app进行测试"><span class="nav-number">1.0.5.</span> <span class="nav-text">使用drozer对app进行测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#drozer的相关参数"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">drozer的相关参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drozer的四大组件"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">drozer的四大组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drozer的基本用法"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">drozer的基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本信息收集流程"><span class="nav-number">1.0.5.4.</span> <span class="nav-text">基本信息收集流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过app-package-list模块获取要检测的app的包名"><span class="nav-number">1.0.5.4.1.</span> <span class="nav-text">通过app.package.list模块获取要检测的app的包名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用app-package-info模块查看apk基本信息"><span class="nav-number">1.0.5.4.2.</span> <span class="nav-text">使用app.package.info模块查看apk基本信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用app-package-attacksurface模块识别攻击面"><span class="nav-number">1.0.5.4.3.</span> <span class="nav-text">使用app.package.attacksurface模块识别攻击面</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用app-activity-info模块查看activity组件信息"><span class="nav-number">1.0.5.4.4.</span> <span class="nav-text">使用app.activity.info模块查看activity组件信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用app-provider-info模块查看content-provider组件信息"><span class="nav-number">1.0.5.4.5.</span> <span class="nav-text">使用app.provider.info模块查看content provider组件信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用app-service-info模块查看service组件信息"><span class="nav-number">1.0.5.4.6.</span> <span class="nav-text">使用app.service.info模块查看service组件信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.0.6.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">enl4</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">enl4</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">20k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">19 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
